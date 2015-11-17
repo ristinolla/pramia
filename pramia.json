@@ -1,0 +1,8 @@
+{
+	"name": "pattern test",
+	"paths": {
+		"dist": "./dist",
+		"docs": "./docs"
+	},
+	"types": ["Atom","Component","View"],
+}

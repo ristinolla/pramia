@@ -3,10 +3,28 @@
 	var _ = require('lodash'),
 			mkdirp = require('mkdirp'),
 			fs = require('fs'),
-			mustache = require('mustache'),
-			config = require('../config.json');
+			mustache = require('mustache');
+
 
 	var coreTemplatesDir = "./core/templates";
+	/**
+	* @name getConfigFile 
+	* @description gets the configuration file.
+	* @author Perttu Ristimella
+	* @param :none / use 'param' -snippet 
+	* @returns {Number/Obj/Array/String/Person}
+	*/
+	function getConfigFile( ) {
+		var config;
+		try {
+			config = require('../pramia.json');
+		} catch (err) {
+			config = {};
+		}
+		return config;
+	}
+
+	var config = getConfigFile();
 	/**
 	* @name createDirectory
 	* @description does something awesome
@@ -52,22 +70,44 @@
 		return fs.readFileSync(coreTemplatesDir + "/jade.mustache", "utf8");
 	}
 
+	/**
+	* @name getConfigTemplate 
+	* @description gets config template
+	* @author Perttu Ristimella
+	* @returns {String}
+	*/
+	function getCoreConfigTemplate() {
+		return fs.readFileSync(coreTemplatesDir + "/core-config.mustache", "utf8");
+	}
 
-
-
-
-
-
+	/**
+	* @name hasConfigFile 
+	* @description does the project have pramia.json installed
+	* @author Perttu Ristimella
+	* @returns {Boolean}
+	*/
+	function hasConfigFile( ) {
+		try {
+			fs.readFileSync("./pramia.json", "utf8");
+		} catch(err) {
+			if(err.code === "ENOENT") return false;
+			else throw err;
+		}
+		return true;
+	}
 
 
 	// ===============================
 	// #Exports
 	// ===============================
-
+	module.exports.getConfigFile = getConfigFile;
+	module.exports.hasConfigFile = hasConfigFile;
 	module.exports.createDirectory = createElementDirectory;
 	module.exports.getConfigTemplate = getConfigTemplate;
 	module.exports.getDocsTemplate = getDocsTemplate;
 	module.exports.getJadeTemplate = getJadeTemplate;
+	module.exports.getCoreConfigTemplate = getCoreConfigTemplate;
+	
 
 
 })();

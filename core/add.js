@@ -4,8 +4,9 @@
 			mkdirp 				= require('mkdirp'),
 			fs 						= require('fs'),
 			mustache 			= require('mustache'),
-			Utils				 	= require('./Utils.js'),
-			config 				= require('../config.json');
+			Utils				 	= require('./Utils.js');
+
+	var config = Utils.getConfigFile();
 
 	var paths = config.paths;
 	var ORIG_CWD = process.cwd();
