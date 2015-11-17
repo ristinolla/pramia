@@ -1,0 +1,17 @@
+.pr-element
+	.pr-example
+		block elementExample
+			+{{{ element }}}({{{ elementDefaults }}})
+	.pr-docs
+		block elementDocs
+			h2 markdown
+	.pr-dom
+		block exampleDom
+			pre
+				code.language-html= exampleDom
+	{{#variations}}
+	.pr-variables
+		block elementVariations
+	{{/variations}}
+
+	

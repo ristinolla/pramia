@@ -20,7 +20,9 @@
 		config = Utils.getConfigFile();
 	}
 
+	// Include app libraries only after the config file is set. 
 	var add = require('./core/add.js'),
+			build = require('./core/build.js'),
 			init = require('./core/init.js');
 	
 
@@ -29,7 +31,7 @@
 			add.add(args);
 			break;
 		case 'build':
-			console.log('pramia --help');
+			build.build();
 			break;
 		case 'init':
 			if(Utils.hasConfigFile()){

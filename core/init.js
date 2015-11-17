@@ -34,19 +34,18 @@ var questions = [
     ],
     filter: stripWords,
   },
+   {
+	  type: "input",
+	  name: "distFolder",
+	  message: "Where do you want to output the elements?",
+	  default: function () { return "./patterns"; }
+	},
   {
 	  type: "input",
 	  name: "docsFolder",
 	  message: "Where do you want to publish the docs?",
-	  default: function () { return "./docs"; }
-	},
-  {
-	  type: "input",
-	  name: "distFolder",
-	  message: "Where do you want to output the elements?",
-	  default: function () { return "./dist"; }
-	},
-
+	  default: function () { return "./publish"; }
+	}
 ];
 
 
