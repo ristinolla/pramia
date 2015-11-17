@@ -5,4 +5,4 @@
 //
 
 mixin {{ name }}( test )
-	button.btn.btn--primary= {{ name }}
+	button.btn.btn--primary&attributes(attributes)= {{ name }}

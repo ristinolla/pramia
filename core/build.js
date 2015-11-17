@@ -19,20 +19,52 @@ var _ = require('lodash'),
 		markdown = require( "markdown" ).markdown;
 
 var config = Utils.getConfigFile();
-
+var coreTemplatesDir = "./core/templates";
 
 function build () {
 	var options = {
 		"name": "perttu"
 	};
 	var html = jade.renderFile( './core/templates/docs/page.jade', options);
-	fs.writeFile( "./" + "page" + '.html', html, function (err) {
+	fs.writeFile( "./publish/" + "page" + '.html', html, function (err) {
 	  if (err) throw err;
 	  else return;
 	});
+}
 
+function parseElementForMustache( element ) {
+	var parsed = {
+		"element": element.name,
+	};
+	var stringDefaults = [];
+	if(element.defaults){
+		_.mapKeys(element.defaults, function(value, key) {
+		  stringDefaults.push( key + '=\"' + value + '\"');
+		});
+	}
+	parsed.elementDefaults = stringDefaults.join(", ");
+	return parsed;
+}
+
+function formatAndBuildElement () {
+	var template = fs.readFileSync(coreTemplatesDir + "/docs/element.jade.template", "utf8");
+	var element = {
+		"name": "kakka",
+		"defaults": {
+			"class": "jabadabaduu",
+			"ng-click": "click();"
+		}
+	};
+	var jadeReady = mustache.render(template, parseElementForMustache( element ) );
+	console.log(jadeReady);
+	var options = {};
+	var fn = jade.compile( jadeReady, options);
+	fs.writeFile( "./publish/" + element.name + '.html', fn(), function (err) {
+	  if (err) throw err;
+	  else return;
+	});
 }
 
 
-module.exports.build = build;
+module.exports.build = formatAndBuildElement;
 

@@ -1,17 +1,17 @@
+mixin kakka()
+	button.kakka&attributes(attributes)
+
 .pr-element
 	.pr-example
-		block elementExample
-			+{{{ element }}}({{{ elementDefaults }}})
+		+{{{ element }}}({{{ elementDefaults }}})
 	.pr-docs
-		block elementDocs
-			h2 markdown
+		h2 markdown
 	.pr-dom
-		block exampleDom
-			pre
-				code.language-html= exampleDom
+		pre
+			code.language-html
 	{{#variations}}
 	.pr-variables
-		block elementVariations
+		+{{{ variation }}}( {{{ variationAttrs }}} )
 	{{/variations}}
 
 	
