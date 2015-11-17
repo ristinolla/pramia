@@ -1,13 +1,13 @@
 {
   "name": "pramia",
   "version": "0.0.1",
-  "description": "Style-guide maker",
+  "description": "Pattern Library Maker maker",
   "scripts": {
     "test": "test"
   },
   "preferGlobal": true,
   "bin": {
-    "build": "index.js"
+    "pramia": "index.js"
   },
   "keywords": [
     "style-guide",
@@ -21,6 +21,8 @@
   "author": "Perttu Ristimella <perttu@pertturistimella.com>",
   "license": "MIT",
   "dependencies": {
-    "mkdirp": "^0.5.1"
+    "lodash": "^3.10.1",
+    "mkdirp": "^0.5.1",
+    "mustache": "^2.2.0"
   }
 }

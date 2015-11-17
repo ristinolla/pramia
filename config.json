@@ -1,0 +1,11 @@
+{
+	"paths": {
+		"dist": "./dist"
+	},
+	"types": [
+		"atom",
+		"component",
+		"view"
+	]
+
+}
