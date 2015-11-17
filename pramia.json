@@ -2,7 +2,7 @@
 	"name": "pattern test",
 	"paths": {
 		"dist": "./dist",
-		"docs": "./docs"
+		"docs": "./dist/publish"
 	},
-	"types": ["Atom","Component","View"],
+	"types": ["Atom","Component","View"]
 }
