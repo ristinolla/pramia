@@ -1,0 +1,26 @@
+{
+  "name": "pramia",
+  "version": "0.0.1",
+  "description": "Style-guide maker",
+  "scripts": {
+    "test": "test"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "build": "index.js"
+  },
+  "keywords": [
+    "style-guide",
+    "style",
+    "guide",
+    "style",
+    "pattern",
+    "pattern",
+    "library"
+  ],
+  "author": "Perttu Ristimella <perttu@pertturistimella.com>",
+  "license": "MIT",
+  "dependencies": {
+    "mkdirp": "^0.5.1"
+  }
+}
