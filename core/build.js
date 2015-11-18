@@ -11,12 +11,14 @@
 
 'use strict';
 var _ = require('lodash'),
+		async = require('async'),
 		mkdirp = require('mkdirp'),
 		fs = require('fs'),
 		mustache = require('mustache'),
 		jade = require('jade'),
 		Utils	= require('./lib/utils.js'),
 		Elements = require('./lib/elements.js'),
+		Docs = require('./lib/docs.js'),
 		markdown = require( "markdown" ).markdown;
 
 var config = Utils.getConfigFile();
@@ -31,9 +33,12 @@ function build () {
 	  if (err) throw err;
 	  else return;
 	});
-	Elements.getAllElements(function(err, result ) {
-		if(err) throw err;
-		else console.log(result); 
+	async.waterfall([
+    Elements.getAllElements,
+    Docs.buildDocs
+	], function (err, result) {
+	   console.log("err", err); // result now equals 'done' 
+	   console.log("result", result);
 	});
 }
 
@@ -52,24 +57,7 @@ function parseElementForMustache( element ) {
 	return parsed;
 }
 
-function formatAndBuildElement () {
-	var template = fs.readFileSync(coreTemplatesDir + "/docs/element.jade.template", "utf8");
-	var element = {
-		"name": "kakka",
-		"defaults": {
-			"class": "jabadabaduu",
-			"ng-click": "click();"
-		}
-	};
-	var jadeReady = mustache.render(template, parseElementForMustache( element ) );
-	console.log(jadeReady);
-	var options = {};
-	var fn = jade.compile( jadeReady, options);
-	fs.writeFile( "./publish/" + element.name + '.html', fn(), function (err) {
-	  if (err) throw err;
-	  else return;
-	});
-}
+
 
 
 module.exports.build = build;

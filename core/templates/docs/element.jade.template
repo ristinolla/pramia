@@ -13,5 +13,3 @@ mixin kakka()
 	.pr-variables
 		+{{{ variation }}}( {{{ variationAttrs }}} )
 	{{/variations}}
-
-	

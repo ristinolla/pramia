@@ -1,5 +1,5 @@
 /*!
- * # Pramia - init
+ * # Pramia - elements
  * https://github.com/ristinolla/pramia/
  *
  *
