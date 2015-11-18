@@ -15,7 +15,7 @@ var _ 						= require('lodash'),
 		fs 						= require('fs'),
 		mustache 			= require('mustache'),
 		inquirer			= require('inquirer'),
-		Utils				 	= require('./Utils.js');
+		Utils				 	= require('./lib/utils.js');
 
 var questions = [
 	{
@@ -53,7 +53,7 @@ function stripWords( val ) {
 	val = val.split(", ");
   var elements = [];
   for (var i = 0; i < val.length; i++) {
-  	elements.push('\"' + val[i] + '\"');
+  	elements.push('\"' + val[i].toLowerCase() + '\"');
   }
   return elements; 
 }

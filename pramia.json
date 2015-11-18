@@ -4,5 +4,5 @@
 		"dist": "./dist",
 		"docs": "./dist/publish"
 	},
-	"types": ["Atom","Component","View"]
+	"types": ["atom","component","view"]
 }

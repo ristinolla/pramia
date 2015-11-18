@@ -15,7 +15,8 @@ var _ = require('lodash'),
 		fs = require('fs'),
 		mustache = require('mustache'),
 		jade = require('jade'),
-		Utils	= require('./Utils.js'),
+		Utils	= require('./lib/utils.js'),
+		Elements = require('./lib/elements.js'),
 		markdown = require( "markdown" ).markdown;
 
 var config = Utils.getConfigFile();
@@ -30,7 +31,12 @@ function build () {
 	  if (err) throw err;
 	  else return;
 	});
+	Elements.getAllElements(function(err, result ) {
+		if(err) throw err;
+		else console.log(result); 
+	});
 }
+
 
 function parseElementForMustache( element ) {
 	var parsed = {
@@ -66,5 +72,5 @@ function formatAndBuildElement () {
 }
 
 
-module.exports.build = formatAndBuildElement;
+module.exports.build = build;
 

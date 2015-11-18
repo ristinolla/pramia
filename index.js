@@ -8,7 +8,7 @@
 			_ = require('lodash'),
 			exec = require('child_process').exec,
 			chalk = require('chalk'),
-			Utils = require('./core/utils.js');
+			Utils = require('./core/lib/utils.js');
 
 	var args = process.argv.slice(2);
 

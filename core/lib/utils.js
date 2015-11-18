@@ -27,7 +27,7 @@ var coreTemplatesDir = "./core/templates";
 function getConfigFile( ) {
 	var config;
 	try {
-		config = require('../pramia.json');
+		config = require('../../pramia.json');
 	} catch (err) {
 		config = {};
 	}
@@ -35,6 +35,7 @@ function getConfigFile( ) {
 }
 
 var config = getConfigFile();
+
 /**
 * @name createDirectory
 * @description does something awesome
@@ -47,57 +48,6 @@ function createElementDirectory( elementName, elementType, cb ) {
   	if (err) cb(err, null);
   	else cb(null, dir);
 	}); 
-}
-
-
-/**
-* @name getConfigTemplate 
-* @description gets config template
-* @author Perttu Ristimella
-* @returns {String}
-*/
-function getConfigTemplate() {
-	return fs.readFileSync(coreTemplatesDir + "/config.template", "utf8");
-}
-
-/**
-* @name getConfigTemplate 
-* @description gets config template
-* @author Perttu Ristimella
-* @returns {String}
-*/
-function getDocsTemplate() {
-	return fs.readFileSync(coreTemplatesDir + "/doc.template", "utf8");
-}
-
-/**
-* @name getConfigTemplate 
-* @description gets config template
-* @author Perttu Ristimella
-* @returns {String}
-*/
-function getJadeTemplate() {
-	return fs.readFileSync(coreTemplatesDir + "/jade.template", "utf8");
-}
-
-/**
-* @name getConfigTemplate 
-* @description gets config template
-* @author Perttu Ristimella
-* @returns {String}
-*/
-function getCoreConfigTemplate() {
-	return fs.readFileSync(coreTemplatesDir + "/core-config.template", "utf8");
-}
-
-/**
-* @name getConfigTemplate 
-* @description gets config template
-* @author Perttu Ristimella
-* @returns {String}
-*/
-function getJadeTemplate( file ) {
-	return fs.readFileSync(coreTemplatesDir + "/docs/" + file + ".jade.template", "utf8");
 }
 
 /**
@@ -116,12 +66,6 @@ function hasConfigFile( ) {
 	return true;
 }
 
-
 module.exports.getConfigFile = getConfigFile;
 module.exports.hasConfigFile = hasConfigFile;
 module.exports.createDirectory = createElementDirectory;
-module.exports.getConfigTemplate = getConfigTemplate;
-module.exports.getDocsTemplate = getDocsTemplate;
-module.exports.getJadeTemplate = getJadeTemplate;
-module.exports.getCoreConfigTemplate = getCoreConfigTemplate;
-
